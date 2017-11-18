@@ -122,7 +122,8 @@ In this example:
 ## Tooling
 - [Visual Studio 2017](https://www.visualstudio.com/downloads/)
     - First debugger to support Source Link.
-    - Only supports Source Link from the [Portable PDB](https://github.com/dotnet/core/blob/master/Documentation/diagnostics/portable_pdb.md) format.
+    - Supports Source Link in [Portable PDBs](https://github.com/dotnet/core/blob/master/Documentation/diagnostics/portable_pdb.md) -- default PDB format for .NET Core projects.
+    - VS 2017 Update 3 supports Source Link in Windows PDBs -- default PDB format for .NET Framework projects.
     - The current implementation uses a case insensitive string comparison between the file path and the Source Link entry. Using multiple entries that differ only in casing is not supported; the first entry will be used and the second entry that differs only by case will be ignored. Here is an example of an unsupported Source Link JSON:
         ```json
         {
@@ -135,3 +136,8 @@ In this example:
 - [C# Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
     - Source Link is a planned feature but is not yet supported. 
     - [Omnisharp-vscode issue](https://github.com/OmniSharp/omnisharp-vscode/issues/373)
+- [JetBrains dotPeek](https://www.jetbrains.com/dotpeek) and [JetBrains ReSharper](https://www.jetbrains.com/resharper)
+    - First .NET decompiler to support Source Link.
+    - Supports Source Link in [Portable PDBs](https://github.com/dotnet/core/blob/master/Documentation/diagnostics/portable_pdb.md) -- default PDB format for .NET Core projects.
+    - Can navigate to sources referenced in `source_link.json` or embedded in the Portable PDB.
+    - Can present `source_link.json` contents to the user.
